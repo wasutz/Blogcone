@@ -7,3 +7,16 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.text-center {
+	text-align: center;
+}
+
+.signin-box {
+	background: #FFFFFF;
+	border: 1px solid #EFEFEF;
+	border-radius: 1em;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 2.2em;
+}
