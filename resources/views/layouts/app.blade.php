@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-primary navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -45,7 +45,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         
-                        <li><a href="#">Home</a></li>
+                        <li><a class="active" href="#">Home</a></li>
                         <li><a href="#">Interview</a></li>
                         <li><a href="#">Job</a></li>
                         <li><a href="#">Company Profile</a></li>
