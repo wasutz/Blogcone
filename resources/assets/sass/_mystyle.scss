@@ -1,3 +1,20 @@
+.navbar-primary {
+	background: #2196F3;
+	border-color: #64B5F6;
+
+	a {
+		color: #FFF;
+	}
+}
+
+ul.nav a:hover, a:focus, a:active, a:visited { 
+	background: #90CAF9;
+}
+
+.navbar-nav > li > .active {
+	background: #90CAF9;
+}
+
 .text-center {
 	text-align: center;
 }
