@@ -7701,4 +7701,25 @@ button.close {
   padding: 2.2em;
 }
 
+.card {
+  margin-bottom: 1em;
+  background: #FFFFFF;
+  padding: 0 2.5em 1em 2.5em;
+  border-radius: 5px;
+  border: 1px solid #EDEDED;
+}
+
+.card .title {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.card .content {
+  padding: 1em 0 1em 0;
+}
+
+.card .meta {
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=app.css.map */
