@@ -17,7 +17,10 @@ Auth::routes();
  *	Home
  */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', [
+	'uses' => 'HomeController@index',
+	'as' => 'root',
+]);
 
 /*
  *	Post
