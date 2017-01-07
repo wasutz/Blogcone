@@ -7739,4 +7739,16 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   text-decoration: none;
 }
 
+.form-center {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+}
+
+@media only screen and (max-width: 586px) {
+  .form-center {
+    width: 90%;
+  }
+}
+
 /*# sourceMappingURL=app.css.map */
