@@ -5,7 +5,7 @@
 	<div class="col-md-8">
 		@foreach ($posts as $post)
 			<div class="card clearfix">
-				<h2 class="title"><a href="">{{ $post->title }}</a></h2>
+				<h2 class="title"><a href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a></h2>
 				<div class="meta">
 					<span>by <a href="#">{{ $post->user->username }}</a></span> -
 					<span>{{ $post->created_at->format('d M Y') }}</span>
