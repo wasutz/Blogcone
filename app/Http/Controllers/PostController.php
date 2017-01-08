@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePost;
 use App\Post;
@@ -15,7 +16,9 @@ class PostController extends Controller
 
     public function index()
     {
-        return view('posts.index');
+        $posts = Auth::user()->posts;
+
+        return view('posts.index')->with(['posts' => $posts]);
     }
 
     public function create()
