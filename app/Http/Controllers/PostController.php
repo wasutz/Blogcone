@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $posts = Auth::user()->posts;
 
-        return view('posts.index')->with(['posts' => $posts]);
+        return view('posts.index')->with('posts', $posts);
     }
 
     public function create()
@@ -34,28 +34,63 @@ class PostController extends Controller
                     'user_id' => $request->user()->id
                 ]);
 
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('posts.show', $post->id)
+                         ->with('info', 'Create Successful.');
     }
 
     public function show($id)
     {
         $post = Post::find($id);
 
-        return view('posts.show')->with(['post' => $post]);
+        if(!$post){
+            abort(404);
+        }
+
+        return view('posts.show')->with('post', $post);
     }
 
     public function edit($id)
     {
-        return view('posts.edit');
+        $post = Post::find($id);
+
+        if(!$post || !$this->isOwnerPost($post)){
+            abort(404);
+        }
+
+        return view('posts.edit')->with('post', $post);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        if(!$post || !$this->isOwnerPost($post)){
+            abort(404);
+        }
+
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+
+        return view('posts.show')->with(['post' => $post,
+                                         'info' => 'Update Successful.']);
     }
 
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        if(!$post || !$this->isOwnerPost($post)){
+            abort(404);
+        }
+
+        return redirect()->back()->with('info', 'Post Deleted.');
+    }
+
+    private function isOwnerPost($post){
+        if(Auth::user()->isAdmin()){
+            return true;
+        }
+
+        return $post->user == Auth::user();
     }
 }
