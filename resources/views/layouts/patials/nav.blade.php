@@ -21,14 +21,14 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="#">Interview</a></li>
-                <li><a href="#">Job</a></li>
-                <li><a href="#">Company Profile</a></li>
+                <li><a class="{{ Request::is("/") ? "active" : "" }}" href="{{ url("/") }}">Home</a></li>
+                <li><a class="{{ Request::is("interviews") ? "active" : "" }}" href="#">Interview</a></li>
+                <li><a class="{{ Request::is("jobs") ? "active" : "" }}" href="#">Job</a></li>
+                <li><a class="{{ Request::is("company-profile") ? "active" : "" }}" href="#">Company Profile</a></li>
 
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a class="{{ Request::is("login") ? "active" : "" }}" href="{{ url('/login') }}">Login</a></li>
+                    <li><a class="{{ Request::is("register") ? "active" : "" }}" href="{{ url('/register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
