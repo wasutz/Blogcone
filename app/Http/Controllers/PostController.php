@@ -83,6 +83,8 @@ class PostController extends Controller
             abort(404);
         }
 
+        $post->delete();
+
         return redirect()->back()->with('info', 'Post Deleted.');
     }
 
