@@ -5,8 +5,18 @@
 		@foreach ($posts as $post)
 			<div class="card clearfix">
 				<div class="manage-button pull-right">
-					<a href="{{ route('posts.edit', ['post' => $post])}}"><button class="btn btn-warning">Edit</button></a>
-					<a href=""><button class="btn btn-danger">Delete</button></a>
+					<div class="row">
+						<div class="col-md-6">
+							<a href="{{ route('posts.edit', ['post' => $post])}}"><button class="btn btn-warning">Edit</button></a>
+						</div>
+						<div class="col-md-6">
+							<form action="{{ route('posts.destroy', ['post' => $post]) }}" method="post">
+								{{ csrf_field() }}
+								<input type="hidden" name="_method" value="delete"/>
+								<button class="btn btn-danger" type="submit">Delete</button>
+							</form>
+						</div>
+					</div>
 				</div>
 				<h2 class="title"><a href="">{{ $post->title }}</a></h2>
 						
