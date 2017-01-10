@@ -36,5 +36,10 @@
 			</ul>
 		</div>
     </div>
+
+    	
+	<div class="col-md-12 text-center">
+		{!! $posts->links() !!}
+	</div>
 </div>
 @endsection
