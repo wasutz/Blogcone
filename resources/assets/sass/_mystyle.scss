@@ -49,6 +49,14 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	}
 }
 
+.manage-button {
+	margin-top: 1.5em;
+
+	.btn {
+		width: 5em;
+	}
+}
+
 .form-center {
 	display: block;
 	margin: 0 auto;

@@ -7739,6 +7739,14 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   text-decoration: none;
 }
 
+.manage-button {
+  margin-top: 1.5em;
+}
+
+.manage-button .btn {
+  width: 5em;
+}
+
 .form-center {
   display: block;
   margin: 0 auto;
