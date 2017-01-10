@@ -39,6 +39,9 @@
                             <li>
                                 <a href="{{ url('/posts/create')}}">Create Content</a>
                             </li>
+                            <li>
+                                <a href="{{ url('/posts')}}">My Posts</a>
+                            </li>
                             <li class="divider"></li>
                             <li>
                                 <a href="#">My Account</a>
