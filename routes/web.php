@@ -23,10 +23,11 @@ Route::get('/', [
 ]);
 
 /*
- *	Post
+ *	Model
  */
 
 Route::resource('posts', 'PostController');
+Route::resource('tags', 'TagController');
 
 /*
  *	Admin
