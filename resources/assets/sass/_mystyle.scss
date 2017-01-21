@@ -1,18 +1,24 @@
+$primary: #2196F3;
+$border-nav: #64B5F6;
+$hover-nav: #90CAF9;
+$white: #FFFFFF;
+$border-default: #EFEFEF; 
+
 .navbar-primary {
-	background: #2196F3;
-	border-color: #64B5F6;
+	background: $primary;
+	border-color: $border-nav;
 
 	a {
-		color: #FFF;
+		color: $white;
 	}
 }
 
 ul.nav a:hover, a:focus, a:active, a:visited { 
-	background: #90CAF9;
+	background: $hover-nav;
 }
 
 .navbar-nav > li > .active {
-	background: #90CAF9;
+	background: $hover-nav;
 }
 
 .text-center {
@@ -20,8 +26,8 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 }
 
 .signin-box {
-	background: #FFFFFF;
-	border: 1px solid #EFEFEF;
+	background: $white;
+	border: 1px solid $border-default;
 	border-radius: 1em;
 	max-width: 400px;
 	margin: 0 auto;
@@ -30,10 +36,10 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 
 .card {
 	margin-bottom: 1em;
-	background: #FFFFFF;
+	background: $white;
 	padding: 0 2.5em 1em 2.5em;
 	border-radius: 5px;
-	border: 1px solid #EDEDED;
+	border: 1px solid $border-default;
 
 	.title {
 		text-decoration: none;
@@ -48,6 +54,32 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 		text-decoration: none;
 	}
 }
+
+.tag-block {
+	background: $white;
+	border: 1px solid $border-default;
+	border-radius: 10px;
+
+	a {
+		text-decoration: none;;
+	}
+
+	.tag-name {
+		text-weight: bold;
+		position: relative;
+		bottom: 0.25em;
+		text-align: center;
+	}
+
+	&:hover, &:focus {
+		background: $primary;
+
+		.tag-name {
+			color: $white;
+		}
+	}
+}
+
 
 .manage-button {
 	margin-top: 1.5em;
