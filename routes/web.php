@@ -37,6 +37,12 @@ Route::get('/tags', [
 	'as' => 'tags.index',
 ]);
 
+Route::get('/tags/{tag}', [
+	'uses' => 'TagController@show',
+	'as' => 'tags.show',
+]);
+
+
 Route::post('/tags', [
 	'uses' => 'TagController@store',
 	'as' => 'tags.store',
