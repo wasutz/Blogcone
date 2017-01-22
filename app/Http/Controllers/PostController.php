@@ -35,17 +35,7 @@ class PostController extends Controller
         $post->user_id = $request->user()->id;
         $post->save();
 
-        foreach($request->tags as $tag){
-            $find = Tag::where('name', $tag)->first();
-
-            if(!$find){
-                $find = Tag::create([
-                            'name' => $tag
-                        ]);
-            }
-
-            $post->tags()->attach($find);
-        }
+        $post->addTags($request->tags);
 
         return redirect()->route('posts.show', $post->id)
                          ->with('info', 'Create Successful.');
