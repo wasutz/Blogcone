@@ -20,23 +20,8 @@
 			</div>
 		@endforeach
 	</div>
-	<div class="col-md-4">
-		<div class="job card">
-			<h2 class="title">Job</h2>
-			<ul>
-				<li><a href="#">Job 1</a></li>
-				<li><a href="#">Job 2</a></li>
-			</ul>
-		</div>
-		<div class="tag card">
-			<h2 class="title">Tag</h2>
-			<ul>
-				<li><a href="#">Tag 1</a></li>
-				<li><a href="#">Tag 2</a></li>
-			</ul>
-		</div>
-    </div>
-
+	
+	@include('layouts.patials.sidebar')
     	
 	<div class="col-md-12 text-center">
 		{!! $posts->links() !!}
