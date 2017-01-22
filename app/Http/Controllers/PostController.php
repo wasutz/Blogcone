@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePost;
 use App\Post;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -28,11 +29,23 @@ class PostController extends Controller
 
     public function store(StorePost $request)
     {
-        $post = Post::create([
-                    'title' => $request->title,
-                    'content' => $request->content,
-                    'user_id' => $request->user()->id
-                ]);
+        $post = new Post;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->user_id = $request->user()->id;
+        $post->save();
+
+        foreach($request->tags as $tag){
+            $find = Tag::where('name', $tag)->first();
+
+            if(!$find){
+                $find = Tag::create([
+                            'name' => $tag
+                        ]);
+            }
+
+            $post->tags()->attach($find);
+        }
 
         return redirect()->route('posts.show', $post->id)
                          ->with('info', 'Create Successful.');
