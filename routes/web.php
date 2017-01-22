@@ -23,10 +23,30 @@ Route::get('/', [
 ]);
 
 /*
- *	Model
+ *	Post
  */
 
 Route::resource('posts', 'PostController');
+
+/*
+ *	Tag
+ */
+
+Route::get('/tags', [
+	'uses' => 'TagController@index',
+	'as' => 'tags.index',
+]);
+
+Route::post('/tags', [
+	'uses' => 'TagController@store',
+	'as' => 'tags.store',
+]);
+
+Route::delete('/tags/{tag}', [
+	'uses' => 'TagController@destroy',
+	'as' => 'tags.destroy',
+]);
+
 Route::resource('tags', 'TagController');
 
 /*
