@@ -2,16 +2,14 @@
 
 @section('content')
 	@foreach ($tags as $tag)
-		<div class="tag-block col-md-3">
+		<div class="tag-block col-md-2">
 			<a href="#">
-				<div class="clearfix">
-					<h3 class="tag-name">{{ $tag->name }}</h3>
-				</div>
+				<h3 class="tag-name">{{ $tag->name }}</h3>
 			</a>
 		</div>
 	@endforeach
 
-	<div class="col-md-12 text-center">
+	<div class="col-md-12 text-center text-uppercase">
 		{!! $tags->links() !!}
 	</div>
 @endsection

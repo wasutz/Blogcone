@@ -7741,8 +7741,10 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 
 .tag-block {
   background: #FFFFFF;
-  border: 1px solid #EFEFEF;
+  border: 2px solid #EFEFEF;
   border-radius: 10px;
+  margin-bottom: 1.2em;
+  margin-right: 1.2em;
 }
 
 .tag-block a {

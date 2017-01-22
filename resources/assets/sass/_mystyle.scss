@@ -57,8 +57,10 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 
 .tag-block {
 	background: $white;
-	border: 1px solid $border-default;
+	border: 2px solid $border-default;
 	border-radius: 10px;
+	margin-bottom: 1.2em;
+	margin-right: 1.2em;
 
 	a {
 		text-decoration: none;;
