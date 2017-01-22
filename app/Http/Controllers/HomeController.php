@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id', 'desc')->paginate(7);
+        $tags = Tag::paginate(10);
 
-        return view('index')->with(['posts' => $posts]);
+        return view('index')->with(['posts' => $posts,
+                                    'tags' => $tags]);
     }
 }
