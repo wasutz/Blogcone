@@ -47,8 +47,6 @@ Route::delete('/tags/{tag}', [
 	'as' => 'tags.destroy',
 ]);
 
-Route::resource('tags', 'TagController');
-
 /*
  *	Admin
  */
