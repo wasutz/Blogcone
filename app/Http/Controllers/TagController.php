@@ -21,6 +21,20 @@ class TagController extends Controller
         return view('tags.index')->with('tags', $tags);
     }
 
+    public function show($id)
+    {
+        $tag = Tag::find($id);
+
+        if(!$tag){
+            abort(404);
+        }
+
+        $posts = $tag->posts()->paginate(10);
+
+        return view('tags.show')->with(['tag' => $tag,
+                                        'posts' => $posts]);
+    }
+
     public function store(StoreTag $request)
     {
         Tag::create([
