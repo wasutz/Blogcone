@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('stylesheets')
+	<link rel="stylesheet" href="/css/select2.min.css">
+@endsection
+
 @section('content')
 <div class="form-center">
 	<h2>Create New Post</h2>
@@ -26,7 +30,30 @@
                 </span>
             @endif
 		</div>
+		
+		<div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+		 	<label for="tags">Tags</label>
+			<select id="tags" name="tags[]" class="form-control js-example-tags" multiple="multiple"></select>
+
+			@if ($errors->has('tags'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('tags') }}</strong>
+                </span>
+            @endif
+		</div>
+
 		<button type="submit" class="btn btn-primary">Create</button>
 	</form>
 </div>
+@endsection
+
+@section('scripts')
+	<script src="/js/select2.min.js"></script>
+	<script type="text/javascript">
+		$(".js-example-tags").select2({
+		  tags: true,
+		  tokenSeparators: [",", " "],
+		  multiple: true
+		});
+	</script>
 @endsection
