@@ -14,13 +14,18 @@
 						<a href="{{ url('/tags/'. $tag->id)}}"><span>{{ $tag->name }}</span></a>
 					@endforeach
 				</div>
-				<p class="content">{!! $post->content !!}</p>
+				<p class="content">{{ substr(strip_tags($post->content), 0, 300) }}</p>
 
 				<div class="pull-left">
 					<span>Likes 147</span>
 					<span>Comments 3</span>
 				</div>
-				<button class="btn btn-primary pull-right">Readmore</button>
+
+				@if(strlen($post->content) > 300)
+					<a href="{{ url('/posts/'. $post->id )}}">
+						<button class="btn btn-primary pull-right">Readmore</button>
+					</a>
+				@endif
 			</div>
 		@endforeach
 	</div>

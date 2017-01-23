@@ -28,7 +28,7 @@
 						<a href="{{ url('/tags/'. $tag->id)}}"><span>{{ $tag->name }}</span></a>
 					@endforeach
 				</div>
-				<p class="content">{!! $post->content !!}</p>
+				<p class="content">{{ substr(strip_tags($post->content), 0, 300) }}</p>
 
 				<div class="pull-left">
 					<span>Likes 147</span>
