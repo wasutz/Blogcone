@@ -81,6 +81,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $post->tags()->detach();
 
         if(!$post || !$this->isOwnerPost($post)){
             abort(404);
