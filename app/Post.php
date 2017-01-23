@@ -25,6 +25,10 @@ class Post extends Model
 
     public function addTags($tags)
     {
+        if(!$tags){
+            return;
+        }
+
         foreach($tags as $tag){
             $find = Tag::firstOrCreate(['name' => $tag]);
 
