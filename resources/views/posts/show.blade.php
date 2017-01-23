@@ -7,7 +7,7 @@
 			<span>by <a href="#">{{ $post->user->username }}</a></span> -
 			<span>{{ $post->created_at->format('d M Y') }}</span>
 		</div>
-		<p class="content">{{ $post->content }}</p>
+		<p class="content">{!! $post->content !!}</p>
 
 		<div class="pull-left">
 			<span>Likes 147</span>
