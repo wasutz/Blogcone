@@ -30,6 +30,7 @@ class PostController extends Controller
     public function store(StorePost $request)
     {
         $post = new Post;
+
         $post->title = $request->title;
         $post->content = $request->content;
         $post->user_id = $request->user()->id;
@@ -63,7 +64,7 @@ class PostController extends Controller
         return view('posts.edit')->with('post', $post);
     }
 
-    public function update(Request $request, $id)
+    public function update(StorePost $request, $id)
     {
         $post = Post::find($id);
 
@@ -71,8 +72,12 @@ class PostController extends Controller
             abort(404);
         }
 
+        $post->tags()->detach();
+        $post->addTags($request->tags);
+
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->save();
 
         return view('posts.show')->with(['post' => $post,
                                          'info' => 'Update Successful.']);
