@@ -31,15 +31,23 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany('App\Post');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany('App\Comment');
     }
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         return $this->role_id === config('roles.admin');
+    }
+
+    public function getAvatarUrl() 
+    {
+        return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40";
     }
 }
