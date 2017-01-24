@@ -33,4 +33,20 @@
 			</form>
 		</div>
 	@endif
+
+	<div class="margin-up-2">
+		@if($post->comments()->count() > 0)
+			@foreach($post->comments as $comment)
+				<div class="card clearfix">
+					<div class="margin-up-1">
+						<img src="{{ $comment->user->getAvatarUrl() }}" />
+						<span>{{ $comment->user->username }}</span><br/>
+					</div>
+					<p class="margin-up-1">{{ $comment->content }}</p>
+				</div>
+			@endforeach
+		@else
+			<h4 class="text-center">No comments</h4>
+		@endif
+	</div>
 @endsection

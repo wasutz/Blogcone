@@ -7688,6 +7688,18 @@ button.close {
   }
 }
 
+.margin-up-1 {
+  margin-top: 1em;
+}
+
+.margin-up-2 {
+  margin-top: 2em;
+}
+
+.margin-up-3 {
+  margin-top: 3em;
+}
+
 .navbar-primary {
   background: #2196F3;
   border-color: #64B5F6;
