@@ -14,4 +14,23 @@
 			<span>Comments 3</span>
 		</div>
 	</div>
+	
+	 @if (Auth::user())
+		<div class="card clearfix">
+			<h4>Comments</h4>
+			<form action="{{ url('/comments') }}" method="post" class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+				{{ csrf_field() }}
+
+				<input type="hidden" name="post_id" value={{ $post->id }} />
+				<textarea class="form-control" name="content" placeholder="Write a comment..."></textarea><br/>
+				<button type="submit" class="btn btn-primary pull-right">Publish</button>
+
+			    @if ($errors->has('content'))
+	                <span class="help-block">
+	                    <strong>{{ $errors->first('content') }}</strong>
+	                </span>
+	            @endif
+			</form>
+		</div>
+	@endif
 @endsection
