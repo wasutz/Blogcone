@@ -29,6 +29,15 @@ Route::get('/', [
 Route::resource('posts', 'PostController');
 
 /*
+ *	Comment
+ */
+
+Route::post('/comments', [
+	'uses' => 'CommentController@store',
+	'as' => 'comments.store',
+]);
+
+/*
  *	Tag
  */
 
