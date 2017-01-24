@@ -32,7 +32,7 @@
 
 				<div class="pull-left">
 					<span>Likes 147</span>
-					<span>Comments 3</span>
+					<span>Comments {{ $post->comments()->count() }}</span>
 				</div>
 			</div>
 		@endforeach
