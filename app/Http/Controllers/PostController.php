@@ -58,7 +58,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        if(!$post || !$this->isOwnerPost($post)){
+        if(!$post || Auth::user() != $post->user){
             abort(404);
         }
 
@@ -69,7 +69,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        if(!$post || !$this->isOwnerPost($post)){
+        if(!$post || Auth::user() != $post->user){
             abort(404);
         }
 
@@ -89,20 +89,12 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->tags()->detach();
 
-        if(!$post || !$this->isOwnerPost($post)){
+        if(!$post || Auth::user() != $post->user){
             abort(404);
         }
 
         $post->delete();
 
         return redirect()->back()->with('info', 'Post Deleted.');
-    }
-
-    private function isOwnerPost($post){
-        if(Auth::user()->isAdmin()){
-            return true;
-        }
-
-        return $post->user == Auth::user();
     }
 }
