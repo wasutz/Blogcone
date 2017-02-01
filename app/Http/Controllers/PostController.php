@@ -34,6 +34,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->user_id = $request->user()->id;
+        $post->published = 1;
         $post->save();
 
         $post->addTags($request->tags);
