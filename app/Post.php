@@ -34,6 +34,11 @@ class Post extends Model
         return $this->morphMany('App\Like', 'likeable');
     }
 
+    public function getLikes()
+    {
+        return $this->likes()->count();
+    }
+
     public function addTags($tags)
     {
         if(!$tags){
