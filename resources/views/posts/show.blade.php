@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="card clearfix">
+	<div class="post card clearfix">
 		<h2 class="title"><a href="">{{ $post->title }}</a></h2>
 		<div class="meta">
 			<span>by <a href="#">{{ $post->user->username }}</a></span> -
@@ -10,8 +10,15 @@
 		<p class="content">{!! $post->content !!}</p>
 
 		<div class="pull-left">
-			<span>Likes 147</span>
-			<span>Comments 3</span>
+			<form class="like-form" action="{{ route('posts.like', ["id" => $post->id]) }}" method="post">
+				{{ csrf_field() }}
+				<span class="like-button glyphicon glyphicon-heart-empty"></span>
+				<span class="likes-count">{{ $post->getLikes() }}</span>
+			</form>
+			<div class="comments-count">
+				<span class="glyphicon glyphicon-comment"></span>
+				<span>{{ $post->comments()->count() }}</span>
+			</div>
 		</div>
 	</div>
 	
@@ -49,4 +56,8 @@
 			<h4 class="text-center">No comments</h4>
 		@endif
 	</div>
+@endsection
+
+@section("scripts")
+	<script src="../js/like.js"></script>
 @endsection
