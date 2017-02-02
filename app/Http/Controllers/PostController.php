@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StorePost;
 use App\Post;
 use App\Tag;
+use App\Like;
 
 class PostController extends Controller
 {
@@ -96,5 +97,20 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->back()->with('info', 'Post Deleted.');
+    }
+
+    public function postLike($id)
+    {
+        $post = Post::findOrFail($id);
+
+        if(!Auth::user()->hasLikedPost($post)){
+            $post->likes()->create([
+                'user_id' => Auth::id()
+            ]);
+        }
+
+        $post->load('likes');
+
+        return response()->json($post->likes);  
     }
 }
