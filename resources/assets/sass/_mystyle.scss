@@ -109,6 +109,18 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	width: 60%;
 }
 
+
+.post {
+	.like-form {
+		display: inline-block;
+	}
+
+	.comments-count {
+		display: inline-block;
+		margin-left: 1em;
+	}
+}
+
 @media only screen and (max-width:586px){
 	.form-center {
 		width: 90%;
