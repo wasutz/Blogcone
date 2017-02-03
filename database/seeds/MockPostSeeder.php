@@ -22,7 +22,7 @@ Barack Obama's administration refused to take sides in the dispute.
 It did, however, send B-52 bombers and a naval destroyer last year, and the then US Secretary of State John Kerry spoke out over what he called an increase of militarisation from one kind or another in the region.
 Several nations claim territory in the resource-rich South China Sea, which is also an important shipping route.",
         	'user_id' => 1,
-            'published' => true
+            'published' => config('post.published')
         ]);
 
         $post->addTags(["China", "News", "War"]);
@@ -39,7 +39,7 @@ I knew at one point after the surgery I could not have kids, I was not having my
 She had additional surgery at 18 to reconstruct her vagina.
 But she said the procedures caused her distress and she wanted to speak out in part to discourage other parents from putting their children through perhaps unnecessary surgery.",
         	'user_id' => 2,
-            'published' => true
+            'published' => config('post.published')
         ]);
 
         $post->addTags(["Model", "News", "Fashion"]);
