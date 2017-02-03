@@ -7814,8 +7814,8 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 }
 
 .sidebar-nav li {
-  text-indent: 20px;
-  line-height: 40px;
+  text-indent: 25px;
+  line-height: 50px;
 }
 
 .sidebar-nav li a {
@@ -7833,6 +7833,9 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/*
+ *	Dashboard
+ */
 @media only screen and (max-width: 586px) {
   .form-center {
     width: 90%;

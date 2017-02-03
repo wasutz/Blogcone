@@ -126,7 +126,6 @@ ul.nav a:hover, a:focus, a:active, a:visited {
  */
 
 .sidebar-nav {
-
 	border-radius: 3px;
     width: 250px;
     margin: 0;
@@ -135,8 +134,8 @@ ul.nav a:hover, a:focus, a:active, a:visited {
     background: $primary;
 
 	li {
-	    text-indent: 20px;
-	    line-height: 40px;
+	    text-indent: 25px;
+	    line-height: 50px;
 
 	    a {
 		    display: block;
@@ -150,13 +149,14 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 		}
 	}
 
-	li.active {
-		a {
-			background: rgba(255,255,255,0.2);
-		}
+	li.active a {
+		background: rgba(255,255,255,0.2);
 	}
 }
 
+/*
+ *	Dashboard
+ */
 
 @media only screen and (max-width:586px){
 	.form-center {
