@@ -55,4 +55,13 @@ class User extends Authenticatable
     {
         return (bool) $post->likes->where('user_id', $this->id)->count();
     }
+
+    public function getPublishedByRole()
+    {
+        if($this->role_id === config('roles.basic')){
+            return config('post.review');
+        }
+
+        return config('post.published');
+    }
 }
