@@ -35,7 +35,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->content = $request->content;
         $post->user_id = $request->user()->id;
-        $post->published = 1;
+        $post->published = $request->user()->getPublishedByRole();
         $post->save();
 
         $post->addTags($request->tags);
@@ -81,19 +81,21 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->save();
 
-        return view('posts.show')->with(['post' => $post,
-                                         'info' => 'Update Successful.']);
+        return view('posts.show')->with([
+                                    'post' => $post,
+                                    'info' => 'Update Successful.'
+                                ]);
     }
 
     public function destroy($id)
     {
         $post = Post::find($id);
-        $post->tags()->detach();
 
         if(!$post || Auth::user() != $post->user){
             abort(404);
         }
 
+        $post->tags()->detach();
         $post->delete();
 
         return redirect()->back()->with('info', 'Post Deleted.');
