@@ -121,6 +121,43 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	}
 }
 
+/*
+ *	Side bar
+ */
+
+.sidebar-nav {
+
+	border-radius: 3px;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: $primary;
+
+	li {
+	    text-indent: 20px;
+	    line-height: 40px;
+
+	    a {
+		    display: block;
+		    text-decoration: none;
+		    color: $white;
+		}
+
+		a:hover, a:focus {
+	    	text-decoration: none;
+	    	background: rgba(255,255,255,0.2);
+		}
+	}
+
+	li.active {
+		a {
+			background: rgba(255,255,255,0.2);
+		}
+	}
+}
+
+
 @media only screen and (max-width:586px){
 	.form-center {
 		width: 90%;
