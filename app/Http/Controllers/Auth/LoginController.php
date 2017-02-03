@@ -7,33 +7,23 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
+    protected $userPath = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected $adminPath = '/admin';
+
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    protected function authenticated($request, $user)
+    {
+        if($user->role_id === config('roles.admin')) {
+            return redirect()->intended($this->adminPath);
+        }
+
+        return redirect()->intended($this->userPath);
     }
 }
