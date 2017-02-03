@@ -9,21 +9,11 @@ use App\Tag;
 
 class AdminController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $postCount = Post::count();
@@ -33,5 +23,12 @@ class AdminController extends Controller
                                         "postCount" => $postCount,
                                         "tagCount" => $tagCount
                                     ]);
+    }
+
+    public function review()
+    {
+        $posts = Post::where('published', config('post.review'));
+
+        return view('admin/review')->with('posts', $posts);
     }
 }

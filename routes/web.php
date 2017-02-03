@@ -61,3 +61,4 @@ Route::delete('/tags/{tag}', [
  */
 
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/reviews', 'AdminController@review');
