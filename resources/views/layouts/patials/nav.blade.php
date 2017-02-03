@@ -41,6 +41,11 @@
                                 <a href="{{ url('/posts')}}">My Posts</a>
                             </li>
                             <li class="divider"></li>
+                            @if (Auth::user()->role_id === config('roles.admin'))
+                                <li>
+                                    <a href="{{ url('/admin') }}">Admin</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="#">My Account</a>
                             </li>
