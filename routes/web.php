@@ -22,6 +22,11 @@ Route::post('/posts/{id}/like', [
 	'as' => 'posts.like'
 ]);
 
+Route::post('/posts/{id}/review', [
+	'uses' => 'PostController@postReview',
+	'as' => 'posts.review'
+]);
+
 /*
  *	Comment
  */

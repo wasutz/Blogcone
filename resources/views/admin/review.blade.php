@@ -17,7 +17,10 @@
                 <tr>
                   <td class="col-sm-8">{{ $post->title }}</td>
                   <td class="col-sm-4">
-                    <button class="btn btn-success btn-sm">Publish</button>
+                    <form class="inline-block" action="{{ route('posts.review', ["id"=> $post->id]) }}" method="post">
+                      {{ csrf_field() }}
+                      <button class="btn btn-success btn-sm">Publish</button>
+                    </form>
                     <button class="btn btn-warning btn-sm">Cancel</button>
                     <button class="btn btn-danger btn-sm">Delete</button>
                   </td>

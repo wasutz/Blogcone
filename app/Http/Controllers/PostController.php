@@ -117,6 +117,9 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        $post->setPublished(config('post.published'));
 
+        return redirect()->back()
+                         ->with('info', 'Post already published.');
     }
 }
