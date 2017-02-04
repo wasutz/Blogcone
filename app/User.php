@@ -64,4 +64,17 @@ class User extends Authenticatable
 
         return config('post.published');
     }
+
+    public function hasAuthority($post)
+    {
+        if($this->isAdmin()){
+            return true;
+        }
+
+        if($post->user->id === $this->id){
+            return true;
+        }
+
+        return false;
+    }
 }
