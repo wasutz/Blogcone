@@ -4,6 +4,10 @@ $hover-nav: #90CAF9;
 $white: #FFFFFF;
 $border-default: #EFEFEF; 
 
+/*
+ *	Global style
+ */
+
 .margin-up-1 {
 	margin-top: 1em;
 }
@@ -15,6 +19,24 @@ $border-default: #EFEFEF;
 .margin-up-3 {
 	margin-top: 3em;
 }
+
+.inline-block {
+	display: inline-block;
+}
+
+.form-center {
+	display: block;
+	margin: 0 auto;
+	width: 60%;
+}
+
+.text-center {
+	text-align: center;
+}
+
+/*
+ *	Main Navbar
+ */
 
 .navbar-primary {
 	background: $primary;
@@ -33,10 +55,6 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	background: $hover-nav;
 }
 
-.text-center {
-	text-align: center;
-}
-
 .signin-box {
 	background: $white;
 	border: 1px solid $border-default;
@@ -45,6 +63,10 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	margin: 0 auto;
 	padding: 2.2em;
 }
+
+/*
+ *  Card
+ */
 
 .card {
 	margin-bottom: 1em;
@@ -66,6 +88,10 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 		text-decoration: none;
 	}
 }
+
+/*
+ *  Tag
+ */
 
 .tag-block {
 	background: $white;
@@ -94,7 +120,6 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	}
 }
 
-
 .manage-button {
 	margin-top: 1.5em;
 
@@ -103,22 +128,12 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	}
 }
 
-.inline-block {
-	display: inline-block;
-}
-
-.form-center {
-	display: block;
-	margin: 0 auto;
-	width: 60%;
-}
-
 .post .comments-count {
 	margin-left: 1em;
 }
 
 /*
- *	Side bar
+ *	Side bar for admin
  */
 
 .sidebar-nav {
@@ -151,7 +166,7 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 }
 
 /*
- *	Dashboard
+ *  Media
  */
 
 @media only screen and (max-width:586px){

@@ -7688,6 +7688,9 @@ button.close {
   }
 }
 
+/*
+ *	Global style
+ */
 .margin-up-1 {
   margin-top: 1em;
 }
@@ -7700,6 +7703,23 @@ button.close {
   margin-top: 3em;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
+.form-center {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/*
+ *	Main Navbar
+ */
 .navbar-primary {
   background: #2196F3;
   border-color: #64B5F6;
@@ -7717,10 +7737,6 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   background: #90CAF9;
 }
 
-.text-center {
-  text-align: center;
-}
-
 .signin-box {
   background: #FFFFFF;
   border: 1px solid #EFEFEF;
@@ -7730,6 +7746,9 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   padding: 2.2em;
 }
 
+/*
+ *  Card
+ */
 .card {
   margin-bottom: 1em;
   background: #FFFFFF;
@@ -7751,6 +7770,9 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   text-decoration: none;
 }
 
+/*
+ *  Tag
+ */
 .tag-block {
   background: #FFFFFF;
   border: 2px solid #EFEFEF;
@@ -7786,22 +7808,12 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   width: 5em;
 }
 
-.inline-block {
-  display: inline-block;
-}
-
-.form-center {
-  display: block;
-  margin: 0 auto;
-  width: 60%;
-}
-
 .post .comments-count {
   margin-left: 1em;
 }
 
 /*
- *	Side bar
+ *	Side bar for admin
  */
 .sidebar-nav {
   border-radius: 3px;
@@ -7833,7 +7845,7 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 }
 
 /*
- *	Dashboard
+ *  Media
  */
 @media only screen and (max-width: 586px) {
   .form-center {
