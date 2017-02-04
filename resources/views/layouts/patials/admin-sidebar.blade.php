@@ -1,12 +1,12 @@
 <ul class="sidebar-nav">
     <li class="{{ Request::is("admin") ? "active" : "" }}" >
-        <a href="{{ url('/admin') }}">Dashboard</a>
+        <a href="{{ route('admin.index') }}">Dashboard</a>
     </li>
     <li class="{{ Request::is("admin/reviews") ? "active" : "" }}" >
-        <a href="{{ url('/admin/reviews') }}">Reviews</a>
+        <a href="{{ route('admin.reviews') }}">Reviews</a>
     </li>
     <li class="{{ Request::is("admin/posts") ? "active" : "" }}" >
-        <a href="#">Posts</a>
+        <a href="{{ route('admin.posts') }}">Posts</a>
     </li>
     <li class="{{ Request::is("admin/jobs") ? "active" : "" }}" >
         <a href="#">Jobs</a>
