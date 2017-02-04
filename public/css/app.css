@@ -7786,18 +7786,17 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   width: 5em;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .form-center {
   display: block;
   margin: 0 auto;
   width: 60%;
 }
 
-.post .like-form {
-  display: inline-block;
-}
-
 .post .comments-count {
-  display: inline-block;
   margin-left: 1em;
 }
 

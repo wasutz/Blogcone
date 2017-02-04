@@ -103,22 +103,18 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	}
 }
 
+.inline-block {
+	display: inline-block;
+}
+
 .form-center {
 	display: block;
 	margin: 0 auto;
 	width: 60%;
 }
 
-
-.post {
-	.like-form {
-		display: inline-block;
-	}
-
-	.comments-count {
-		display: inline-block;
-		margin-left: 1em;
-	}
+.post .comments-count {
+	margin-left: 1em;
 }
 
 /*

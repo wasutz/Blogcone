@@ -10,12 +10,12 @@
 		<p class="content">{!! $post->content !!}</p>
 
 		<div class="pull-left">
-			<form class="like-form" action="{{ route('posts.like', ["id" => $post->id]) }}" method="post">
+			<form class="inline-block" action="{{ route('posts.like', ["id" => $post->id]) }}" method="post">
 				{{ csrf_field() }}
 				<span class="like-button glyphicon glyphicon-heart-empty"></span>
 				<span class="likes-count">{{ $post->getLikes() }}</span>
 			</form>
-			<div class="comments-count">
+			<div class="comments-count inline-block">
 				<span class="glyphicon glyphicon-comment"></span>
 				<span>{{ $post->comments()->count() }}</span>
 			</div>
