@@ -122,4 +122,14 @@ class PostController extends Controller
         return redirect()->back()
                          ->with('info', 'Post already published.');
     }
+
+    public function postCancel($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->setPublished(config('post.cancel'));
+
+        return redirect()->back()
+                         ->with('info', 'Post already cancel.');  
+    }
 }

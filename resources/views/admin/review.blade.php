@@ -21,8 +21,10 @@
                       {{ csrf_field() }}
                       <button class="btn btn-success btn-sm">Publish</button>
                     </form>
-                    <button class="btn btn-warning btn-sm">Cancel</button>
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                     <form class="inline-block" action="{{ route('posts.cancel', ["id"=> $post->id]) }}" method="post">
+                         {{ csrf_field() }}
+                         <button class="btn btn-warning btn-sm">Cancel</button>
+                     </form>
                   </td>
                 </tr>
               @endforeach

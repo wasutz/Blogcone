@@ -27,6 +27,11 @@ Route::post('/posts/{id}/review', [
 	'as' => 'posts.review'
 ]);
 
+Route::post('/posts/{id}/cancel', [
+	'uses' => 'PostController@postCancel',
+	'as' => 'posts.cancel'
+]);
+
 /*
  *	Comment
  */
