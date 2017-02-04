@@ -27,7 +27,8 @@ class AdminController extends Controller
 
     public function review()
     {
-        $posts = Post::where('published', config('post.review'));
+        $posts = Post::where('published', config('post.review'))
+                     ->paginate(10);
 
         return view('admin/review')->with('posts', $posts);
     }
