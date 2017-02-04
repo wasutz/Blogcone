@@ -41,4 +41,11 @@ class AdminController extends Controller
 
         return view('admin/posts')->with('posts', $posts);
     }
+
+    public function tags()
+    {
+        $tags = Tag::paginate(10);
+
+        return view('admin/tags')->with('tags', $tags);
+    }
 }

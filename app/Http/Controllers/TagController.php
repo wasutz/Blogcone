@@ -23,16 +23,13 @@ class TagController extends Controller
 
     public function show($id)
     {
-        $tag = Tag::find($id);
-
-        if(!$tag){
-            abort(404);
-        }
-
+        $tag = Tag::findOrFail($id);
         $posts = $tag->posts()->paginate(10);
 
-        return view('tags.show')->with(['tag' => $tag,
-                                        'posts' => $posts]);
+        return view('tags.show')->with([
+                                    'tag' => $tag,
+                                    'posts' => $posts
+                                ]);
     }
 
     public function store(StoreTag $request)
@@ -47,6 +44,12 @@ class TagController extends Controller
 
     public function destroy($id)
     {
+        $tag = Tag::find($id);
 
+        $tag->posts()->detach();
+        $tag->delete();
+
+        return redirect()->back()
+                         ->with('info', 'Tag Already Deleted.');
     }
 }

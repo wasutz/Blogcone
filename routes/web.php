@@ -84,3 +84,8 @@ Route::get('/admin/posts', [
 	'uses' => 'AdminController@posts',
 	'as' => 'admin.posts'
 ]);
+
+Route::get('/admin/tags', [
+	'uses' => 'AdminController@tags',
+	'as' => 'admin.tags'
+]);
