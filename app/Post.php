@@ -51,4 +51,10 @@ class Post extends Model
             $this->tags()->attach($find);
         }
     }
+
+    public function setPublished($published)
+    {
+        $this->published = $published;
+        $this->save();
+    }
 }
