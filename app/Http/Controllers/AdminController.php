@@ -34,4 +34,11 @@ class AdminController extends Controller
 
         return view('admin/review')->with('posts', $posts);
     }
+
+    public function posts()
+    {
+        $posts = Post::paginate(10);
+
+        return view('admin/posts')->with('posts', $posts);
+    }
 }
