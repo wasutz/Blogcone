@@ -14,6 +14,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['show']]);   
+        $this->middleware('admin', ['only' => ['postReview']]);   
     }
 
     public function index()
@@ -46,20 +47,16 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::find($id);
-
-        if(!$post){
-            abort(404);
-        }
+        $post = Post::findOrFail($id);
 
         return view('posts.show')->with('post', $post);
     }
 
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
-        if(!$post || Auth::user() != $post->user){
+        if(!Auth::user()->hasAuthority($post)){
             abort(404);
         }
 
@@ -68,9 +65,9 @@ class PostController extends Controller
 
     public function update(StorePost $request, $id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
-        if(!$post || Auth::user() != $post->user){
+        if(!Auth::user()->hasAuthority($post)){
             abort(404);
         }
 
@@ -89,9 +86,9 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
-        if(!$post || Auth::user() != $post->user){
+        if(!Auth::user()->hasAuthority($post)){
             abort(404);
         }
 
@@ -114,5 +111,12 @@ class PostController extends Controller
         $post->load('likes');
 
         return response()->json($post->likes);  
+    }
+
+    public function postReview($id)
+    {
+        $post = Post::findOrFail($id);
+
+
     }
 }
