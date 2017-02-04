@@ -57,4 +57,11 @@ class Post extends Model
         $this->published = $published;
         $this->save();
     }
+
+    public static function getPostByStatus($status)
+    {
+        $posts = Post::where('published', $status);
+
+        return $posts;
+    }
 }
