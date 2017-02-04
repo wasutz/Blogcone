@@ -16,11 +16,13 @@ class AdminController extends Controller
 
     public function index()
     {
-        $postCount = Post::count();
+        $postInReview = Post::getPostByStatus(config('post.review'))->count();
+        $postPublished = Post::getPostByStatus(config('post.published'))->count();
         $tagCount = Tag::count();
 
         return view('admin/index')->with([
-                                        "postCount" => $postCount,
+                                        "postInReview" => $postInReview,
+                                        "postPublished" =>   $postPublished,
                                         "tagCount" => $tagCount
                                     ]);
     }
