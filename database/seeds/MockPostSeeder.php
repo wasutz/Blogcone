@@ -28,6 +28,18 @@ Several nations claim territory in the resource-rich South China Sea, which is a
         $post->addTags(["China", "News", "War"]);
 
         $post = Post::create([
+            'title' => 'Trump presidency week two: Foot still on accelerator',
+            'content' => "President Trump's first week in office was widely regarded as a whirlwind.
+His second week has been no less hectic. Despite the mass protests of week one and falling approval ratings, the administration appears to be doubling down on its pledge to shake up the Washington playbook.
+In a divided America, many people are repelled by the agenda and tone of this administration, while many others are pleased that their president is taking a bold stand and getting things done.
+Here are five key things from week two in Trumpland.",
+            'user_id' => 1,
+            'published' => config('post.published')
+        ]);
+
+        $post->addTags(["Trump", "News"]);
+
+        $post = Post::create([
         	'title' => "Model Hanne Gaby Odiele reveals she is intersex to 'break taboo'",
         	'content' => "A top fashion model has revealed that she is intersex, saying that she hopes speaking out will help break a taboo.
 Hanne Gaby Odiele, 29, was born with undescended testicles, which were removed when she was 10 after doctors warned that they could cause cancer.
@@ -43,5 +55,35 @@ But she said the procedures caused her distress and she wanted to speak out in p
         ]);
 
         $post->addTags(["Model", "News", "Fashion"]);
+
+
+        $post = Post::create([
+            'title' => "Louvre attack: Egyptian man, 29, believed to be assailant",
+            'content' => "French authorities say they believe the man who tried to attack the Louvre museum in the capital Paris on Friday was a 29-year-old Egyptian man.
+Prosecutor Francois Molins said he is thought to have travelled to Paris from Dubai on a tourist visa last month.
+Police are trying to establish if the man acted alone or under instructions, he added.
+The machete-wielding attacker was critically injured after he was shot by French soldiers in a bid to stop him.
+One of the soldiers received minor injuries when the man tried to enter the museum.
+At the time of the incident, hundreds of visitors were inside the Louvre, which is home to numerous celebrated art works, including the Mona Lisa.",
+            'user_id' => 3,
+            'published' => config('post.review')
+        ]);
+
+        $post->addTags(["Egypt", "News", "Attack"]);
+
+        $post = Post::create([
+            'title' => "Why is Asia demanding so much baby formula?",
+            'content' => "<h1>UK consumer goods giant Reckitt Benckiser is betting big on Asia's growing thirst for infant formula.</h1>
+<p>Getting more sales in that region was a major reason it gave for Thursday's $16.7bn (£13.3bn) bid for US firm Mead Johnson - the world's second-biggest maker of the product.
+Baby milk formula is big business. Globally sales were worth $41bn in 2014, according to Euromonitor.
+And Asia is comfortably the fastest-growing market. But why?
+Chinese baby bonanza
+China's 2015 decision to scrap its one-child policy has huge implications not just for demographics, but for consumer-oriented businesses such as Reckitt and Mead.
+Couples are now allowed to have two children after concerns about China's ageing population led the government to reverse the decades-long rule.</p>",
+            'user_id' => 3,
+            'published' => config('post.review')
+        ]);
+
+        $post->addTags(["Asia", "News", "Baby"]);
     }
 }
