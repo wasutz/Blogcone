@@ -14,7 +14,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['show']]);   
-        $this->middleware('admin', ['only' => ['postReview']]);   
+        $this->middleware('admin', ['only' => ['postReview', 'postCancel']]);   
     }
 
     public function index()

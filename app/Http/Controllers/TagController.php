@@ -12,6 +12,7 @@ class TagController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);   
+        $this->middleware('admin', ['only' => ['destroy']]);   
     }
 
     public function index()
