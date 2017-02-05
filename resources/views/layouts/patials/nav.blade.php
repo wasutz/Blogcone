@@ -1,7 +1,6 @@
 <nav class="navbar navbar-primary navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-
             <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
@@ -10,7 +9,6 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Blogcone') }}
             </a>
@@ -22,7 +20,6 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li><a class="{{ Request::is("/") ? "active" : "" }}" href="{{ url("/") }}">Home</a></li>
-                <li><a class="{{ Request::is("jobs") ? "active" : "" }}" href="{{ url("/") }}">Jobs</a></li>
 
                 @if (Auth::guest())
                     <li><a class="{{ Request::is("login") ? "active" : "" }}" href="{{ url('/login') }}">Login</a></li>
