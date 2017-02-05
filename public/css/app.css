@@ -7808,6 +7808,10 @@ ul.nav a:hover, a:focus, a:active, a:visited {
   width: 5em;
 }
 
+.post .like-button {
+  cursor: pointer;
+}
+
 .post .comments-count {
   margin-left: 1em;
 }

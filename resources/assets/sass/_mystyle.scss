@@ -128,8 +128,15 @@ ul.nav a:hover, a:focus, a:active, a:visited {
 	}
 }
 
-.post .comments-count {
-	margin-left: 1em;
+.post {
+
+	.like-button {
+		cursor: pointer;
+	}
+
+	.comments-count {
+		margin-left: 1em;
+	}
 }
 
 /*
