@@ -14,7 +14,7 @@ class HomeController extends Controller
         			 ->orderBy('id', 'desc')
        				 ->paginate(config('post.paginate'));
        				 
-        $tags = Tag::all()->take(10);
+        $tags = Tag::all()->take(15);
 
         return view('index')->with(['posts' => $posts,
                                     'tags' => $tags]);
