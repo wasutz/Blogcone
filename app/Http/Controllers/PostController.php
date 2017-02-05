@@ -109,6 +109,9 @@ class PostController extends Controller
             $post->likes()->create([
                 'user_id' => Auth::id()
             ]);
+        }else{
+            $post->likes()->where('user_id', Auth::id())
+                          ->delete();
         }
 
         $post->load('likes');
