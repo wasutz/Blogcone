@@ -34,16 +34,18 @@
               </div>
             </a>
 
-            <div class="col-md-4">
-                <div class="panel panel-primary">
-                 <div class="panel-heading">
-                    <h3 class="panel-title">Tags</h3>
+            <a href="{{ route('admin.tags') }}">
+              <div class="col-md-4">
+                  <div class="panel panel-primary">
+                   <div class="panel-heading">
+                      <h3 class="panel-title">Tags</h3>
+                    </div>
+                    <div class="panel-body">
+                      <h1 class="pull-right">{{ $tagCount }}</h1>
+                    </div>
                   </div>
-                  <div class="panel-body">
-                    <h1 class="pull-right">{{ $tagCount }}</h1>
-                  </div>
-                </div>
-            </div>
+              </div>
+            </a>
         </div>
     </div>
 @endsection
