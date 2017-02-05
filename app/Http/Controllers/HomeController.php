@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $posts = Post::where('published', config('post.published'))
         			 ->orderBy('id', 'desc')
-       				 ->paginate(7);
+       				 ->paginate(config('post.paginate'));
        				 
         $tags = Tag::all()->take(10);
 

@@ -19,7 +19,10 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Auth::user()->posts()->orderBy('id', 'desc')->paginate(7);
+        $posts = Auth::user()
+                     ->posts()
+                     ->orderBy('id', 'desc')
+                     ->paginate(config('post.paginate'));
 
         return view('posts.index')->with('posts', $posts);
     }
