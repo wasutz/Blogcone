@@ -18,7 +18,12 @@
 
 				<div class="pull-left">
 					<form class="inline-block" action="{{ route('posts.like', ["id" => $post->id]) }}" method="post">
-						<span class="like-button glyphicon glyphicon-heart{{ Auth::user()->hasLikedPost($post) ? '' : '-empty'}}"></span>
+						@if (Auth::guest())
+							<span class="like-button glyphicon glyphicon-heart-empty"></span>
+						@else
+							<span class="like-button glyphicon glyphicon-heart{{ Auth::user()->hasLikedPost($post) ? '' : '-empty'}}"></span>
+						@endif
+						
 						<span class="likes-count">{{ $post->getLikes() }}</span>
 						{{ csrf_field() }}
 					</form>
