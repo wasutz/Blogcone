@@ -8,9 +8,6 @@
     <li class="{{ Request::is("admin/posts") ? "active" : "" }}" >
         <a href="{{ route('admin.posts') }}">Posts</a>
     </li>
-    <li class="{{ Request::is("admin/jobs") ? "active" : "" }}" >
-        <a href="#">Jobs</a>
-    </li>
     <li class="{{ Request::is("admin/tags") ? "active" : "" }}" >
         <a href="{{ route('admin.tags') }}">Tags</a>
     </li>
