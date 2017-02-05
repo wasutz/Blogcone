@@ -56,6 +56,57 @@ But she said the procedures caused her distress and she wanted to speak out in p
 
         $post->addTags(["Model", "News", "Fashion"]);
 
+        $post = Post::create([
+            'title' => "France election: Centrist rising star Macron urges unity",
+            'content' => "The centrist candidate shaking up the French presidential campaign has vowed to unite the nation and boost ties with Germany in a major speech.
+Emmanuel Macron also promised to boost defence spending when he spoke to a crowd in the eastern city of Lyon.
+The former Socialist economy minister set up his own party only last year.
+Opinion polls suggest he may face off with the far right's Marine Le Pen, who is to deliver a keynote speech on Sunday, in the second round of voting.
+Her National Front (FN) party began a two-day rally, also in Lyon, to promote its manifesto, which promises to restore French sovereignty over the country's budget, borders, money and laws.",
+            'user_id' => 2,
+            'published' => config('post.published')
+        ]);
+
+        $post->addTags(["France", "News", "Germany"]);
+
+        $post = Post::create([
+            'title' => "Romania protesters await corruption decree repeal",
+            'content' => "Romania's government is to hold an urgent meeting to scrap a decree that would have shielded many politicians from prosecution for corruption.
+The decree triggered the largest street protests in the country since the fall of communism in 1989. Tens of thousands of protesters in Bucharest cheered the move, but vowed to keep the pressure on the cabinet.
+They said they would continue their rallies until the decree - which was passed on Tuesday and was due to come into effect on 10 February - was actually repealed.
+Some protesters are still demanding the resignation of the entire government.",
+            'user_id' => 2,
+            'published' => config('post.published')
+        ]);
+
+        $post->addTags(["Romania", "News", "Protest", "Politic"]);
+
+        $post = Post::create([
+            'title' => "Scientists crack why eating sounds can make people angry",
+            'content' => "Why some people become enraged by sounds such as eating or breathing has been explained by brain scan studies.
+The condition, misophonia, is far more than simply disliking noises such as nails being scraped down a blackboard. Olana developed the condition when she was eight years old. Her trigger sounds include breathing, eating and rustling noises. Scientists, including Olana, at multiple centres in the UK scanned the brains of 20 misophonic people and 22 people without the condition.
+They were played a range of noises while they were in the MRI machine, including:
+neutral sounds such as rain
+generally unpleasant sounds such as screaming
+people's trigger sounds",
+            'user_id' => 2,
+            'published' => config('post.published')
+        ]);
+
+        $post->addTags(["Scientist", "News", "Noise"]);
+
+        $post = Post::create([
+            'title' => "Silicon Valley strikes back",
+            'content' => "The week began with Silicon Valley bosses coming out of their shells and speaking out against President Trump's immigration policy.
+But by the end they were turning their minds to other matters - some spectacular results from Facebook and Apple and the prospect of the biggest stock market debut by a tech firm for years.
+On my Tech Tent podcast this week, we discuss the hopes and fears of Silicon Valley as Snapchat owner Snap gets ready to hit the New York Stock Exchange.
+We also hear from a London tech chief on his worries about the US migration policy. And you'll be pleased to hear there's a gadget on the show as we find out how augmented reality may enter the classroom.",
+            'user_id' => 2,
+            'published' => config('post.published')
+        ]);
+
+        $post->addTags(["Tech", "Silicon Valley"]);
+
 
         $post = Post::create([
             'title' => "Louvre attack: Egyptian man, 29, believed to be assailant",
