@@ -31,8 +31,21 @@
 				<p class="content">{{ substr(strip_tags($post->content), 0, 300) }}</p>
 
 				<div class="pull-left">
-					<span>Likes 147</span>
-					<span>Comments {{ $post->comments()->count() }}</span>
+					<form class="inline-block" action="{{ route('posts.like', ["id" => $post->id]) }}" method="post">
+						@if (Auth::guest())
+							<span class="like-button glyphicon glyphicon-heart-empty"></span>
+						@else
+							<span class="like-button glyphicon glyphicon-heart{{ Auth::user()->hasLikedPost($post) ? '' : '-empty'}}"></span>
+						@endif
+						
+						<span class="likes-count">{{ $post->getLikes() }}</span>
+						{{ csrf_field() }}
+					</form>
+
+					<div class="comments-count inline-block">
+						<span class="glyphicon glyphicon-comment"></span>
+						<span>{{ $post->comments()->count() }}</span>
+					</div>
 				</div>
 			</div>
 		@endforeach
@@ -41,4 +54,8 @@
 	<div class="col-md-12 text-center">
 		{!! $posts->links() !!}
 	</div>
+@endsection
+
+@section("scripts")
+	<script src="js/like.js"></script>
 @endsection
