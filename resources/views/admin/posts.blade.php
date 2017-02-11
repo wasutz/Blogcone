@@ -18,9 +18,9 @@
                   <td class="col-sm-8">{{ $post->title }}</td>
                   <td class="col-sm-4">
                      <a href="{{ route('posts.edit', ["id"=> $post->id]) }}">
-                        <button class="btn btn-success btn-sm">Edit</button>
+                        <button class="btn btn-warning btn-sm">Edit</button>
                      </a>
-                     <button data-path="{{ route('posts.destroy', ["id"=> $post->id]) }}" data-title="{{ $post->title }}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#confirmDelete">Delete</button>
+                     <button data-path="{{ route('posts.destroy', ["id"=> $post->id]) }}" data-title="{{ $post->title }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelete">Delete</button>
                   </td>
                 </tr>                
               @endforeach
