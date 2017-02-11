@@ -3,13 +3,7 @@
 @section('stylesheets')
 	<link rel="stylesheet" href="/css/select2.min.css">
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-	<script>
-		tinymce.init({ 
-			selector: 'textarea',
-			plugins: 'link',
-			menubar: false
-		});
-	</script>
+	<script src="/js/tinymce-config.js"></script>
 @endsection
 
 @section('content')
