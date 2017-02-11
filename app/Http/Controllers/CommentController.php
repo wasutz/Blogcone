@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Http\Requests\StoreComment;
 use App\Comment;
 
@@ -27,6 +28,15 @@ class CommentController extends Controller
 
     public function destroy($id)
     {
+        $comment = Comment::findOrFail($id);
 
+        if(!Auth::user()->hasAuthority($comment)){
+            abort(404);
+        }
+
+        $comment->delete();
+
+        return redirect()->back()
+                         ->with('info', 'Post Deleted.');
     }
 }

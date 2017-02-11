@@ -41,6 +41,11 @@ Route::post('/comments', [
 	'as' => 'comments.store'
 ]);
 
+Route::delete('/comments/{id}', [
+	'uses' => 'CommentController@destroy',
+	'as' => 'comments.destroy'
+]);
+
 /*
  *	Tag
  */
