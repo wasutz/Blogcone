@@ -39,6 +39,18 @@ class Post extends Model
         return $this->likes()->count();
     }
 
+    public function triggerLike($user)
+    {
+        if(!$user->hasLikedPost($this)){
+            $this->likes()->create([
+                'user_id' => $user->id
+            ]);
+        }else{
+            $this->likes()->where('user_id', $user->id)
+                          ->delete();
+        }
+    }
+
     public function addTags($tags)
     {
         if(!$tags){

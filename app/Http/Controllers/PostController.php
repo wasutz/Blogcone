@@ -104,15 +104,7 @@ class PostController extends Controller
     public function postLike($id)
     {
         $post = Post::findOrFail($id);
-
-        if(!Auth::user()->hasLikedPost($post)){
-            $post->likes()->create([
-                'user_id' => Auth::id()
-            ]);
-        }else{
-            $post->likes()->where('user_id', Auth::id())
-                          ->delete();
-        }
+        $post->triggerLike(Auth::user());
 
         $post->load('likes');
 
