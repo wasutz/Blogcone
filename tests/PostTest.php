@@ -17,7 +17,7 @@ class PostTest extends TestCase
         $this->faker = Faker::create();
     }
 
-    public function testCreate()
+    public function testCreateByAdmin()
     {
         $post = new Post;
         $admin = User::find(1);
@@ -36,6 +36,20 @@ class PostTest extends TestCase
         $this->assertEquals(config('post.published'), $post->published);
     }
 
+    public function testCreateByBasicUser()
+    {
+        $post = new Post;
+        $user = User::find(3);
+
+        $post->title = $this->faker->sentence;
+        $post->content = $this->faker->text;
+        $post->user_id = $user->id;
+        $post->published = $user->getPublishedByRole();
+        $post->save();
+
+        $this->assertEquals(config('post.review'), $post->published);
+    }
+
     public function testLike()
     {
         $post = Post::find(1);
@@ -50,5 +64,15 @@ class PostTest extends TestCase
         }else{
            $this->assertEquals(0, $post->likes()->count()); 
         }
+    }
+
+    public function testDelete()
+    {
+        //Delete two mockup from create by admin and user
+        $post = Post::orderBy('created_at', 'desc')->first();
+        $post->delete();
+
+        $post = Post::orderBy('created_at', 'desc')->first();
+        $post->delete();
     }
 }
