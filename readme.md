@@ -11,9 +11,9 @@ Blogcone is a project for practice Laravel by clone the website.
 To test application the database is seeding with users:
 
 Email and Password
-admin@mail.com / password (Admin role)
-superuser1@mail.com / password (Super role)
-user1@mail.com / password (Basic role)
+- admin@mail.com / password (Admin role)
+- superuser1@mail.com / password (Super role)
+- user1@mail.com / password (Basic role)
 
 ## Quick start
 - `git clone` 
