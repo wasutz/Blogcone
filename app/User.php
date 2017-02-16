@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->role_id === config('roles.admin');
     }
 
+    public function isSuperUser()
+    {
+        return $this->role_id === config('roles.super');
+    }
+
     public function getRoleName()
     {
         switch ($this->role_id) {
