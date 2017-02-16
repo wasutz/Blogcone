@@ -25,6 +25,7 @@
                   <td class="col-sm-2">
                     <button class="btn btn-warning btn-sm" 
                             data-path="{{ route('users.updateRole', ["id" => $user->id]) }}" 
+                            data-username="{{ $user->username }}"
                             data-toggle="modal" 
                             data-target="#editRoleModal">Edit</button>
                   </td>
@@ -49,6 +50,8 @@
                         <h4 class="modal-title" id="editRolel">Edit Role</h4>
                       </div>
                       <div class="modal-body">
+                        <p id="edit-title">Update role for username: </p>
+
                         <select class="form-control" name="role_id">
                           <option value="{{ config('roles.basic') }}">Basic User</option>
                           <option value="{{ config('roles.super') }}">Super User</option>
@@ -72,6 +75,7 @@
     $('#editRoleModal').on('show.bs.modal', function(e) {
         var data = $(e.relatedTarget).data();
 
+        $('#edit-title').append('<strong>' + data.username + '</strong>');
         $('#form-edited').attr('action', data.path);
     });
   </script>
