@@ -45,6 +45,18 @@ class User extends Authenticatable
         return $this->role_id === config('roles.admin');
     }
 
+    public function getRoleName()
+    {
+        switch ($this->role_id) {
+            case config('roles.admin'):
+                return "Admin";
+            case config('roles.super'):
+                return "Super User";
+            default:
+                return "Basic User";
+        }
+    }
+
     public function getAvatarUrl() 
     {
         return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40";
