@@ -11,4 +11,7 @@
     <li class="{{ Request::is("admin/tags") ? "active" : "" }}" >
         <a href="{{ route('admin.tags') }}">Tags</a>
     </li>
+    <li class="{{ Request::is("admin/users") ? "active" : "" }}" >
+        <a href="{{ route('admin.users') }}">Users</a>
+    </li>
 </ul>
