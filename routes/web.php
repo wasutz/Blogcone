@@ -72,6 +72,16 @@ Route::delete('/tags/{tag}', [
 ]);
 
 /*
+ *	User
+ */
+
+Route::put('/users/{id}/role', [
+	'uses' => 'UserController@updateRole',
+	'as' => 'users.updateRole'
+]);
+
+
+/*
  *	Admin
  */
 
