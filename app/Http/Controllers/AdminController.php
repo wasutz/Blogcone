@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\Tag;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -47,5 +48,13 @@ class AdminController extends Controller
         $tags = Tag::paginate(10);
 
         return view('admin/tags')->with('tags', $tags);
+    }
+
+    public function users()
+    {
+        $users = User::where('role_id', '!=', config('roles.admin'))
+                     ->paginate(10);
+
+        return view('admin/users')->with('users', $users);
     }
 }
