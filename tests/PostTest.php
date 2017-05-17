@@ -4,45 +4,32 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use Faker\Factory as Faker;
 use App\Post;
 use App\User;
 
 class PostTest extends TestCase
 {
-    private $faker;
-
-    public function __construct()
-    {
-        $this->faker = Faker::create();
-    }
+	use DatabaseTransactions;
 
     public function testCreateByAdmin()
     {
-        $post = new Post;
-        $admin = User::find(1);
+    	$admin = factory(User::class)->create();
+        $admin->role_id = config('roles.admin');
+        $admin->save();
 
-        $title = $this->faker->sentence;
-        $content = $this->faker->text;
-
-        $post->title = $title;
-        $post->content = $content;
+        $post = factory(Post::class)->make();
         $post->user_id = $admin->id;
         $post->published = $admin->getPublishedByRole();
         $post->save();
 
-        $this->assertEquals($title, $post->title);
-        $this->assertEquals($content, $post->content);
         $this->assertEquals(config('post.published'), $post->published);
     }
 
     public function testCreateByBasicUser()
     {
-        $post = new Post;
-        $user = User::find(3);
+        $post = factory(Post::class)->make();
+        $user = factory(User::class)->create();
 
-        $post->title = $this->faker->sentence;
-        $post->content = $this->faker->text;
         $post->user_id = $user->id;
         $post->published = $user->getPublishedByRole();
         $post->save();
@@ -50,29 +37,16 @@ class PostTest extends TestCase
         $this->assertEquals(config('post.review'), $post->published);
     }
 
-    public function testLike()
+    public function testLikePost()
     {
-        $post = Post::find(1);
-        $admin = User::find(1);
+    	$post = factory(Post::class)->make();
+        $user = factory(User::class)->create();
 
-        $likeBefore = $post->likes()->count();
+        $post->user_id = $user->id;
+        $post->save();
 
-        $post->triggerLike($admin);
+        $post->triggerLike($user);
 
-        if($likeBefore === 0) {
-           $this->assertEquals(1, $post->likes()->count());
-        }else{
-           $this->assertEquals(0, $post->likes()->count()); 
-        }
-    }
-
-    public function testDelete()
-    {
-        //Delete two mockup from create by admin and user
-        $post = Post::orderBy('created_at', 'desc')->first();
-        $post->delete();
-
-        $post = Post::orderBy('created_at', 'desc')->first();
-        $post->delete();
+        $this->assertEquals(1, $post->likes()->count());
     }
 }
