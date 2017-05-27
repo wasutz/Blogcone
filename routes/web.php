@@ -60,7 +60,6 @@ Route::get('/tags/{tag}', [
 	'as' => 'tags.show'
 ]);
 
-
 Route::post('/tags', [
 	'uses' => 'TagController@store',
 	'as' => 'tags.store'
@@ -75,11 +74,15 @@ Route::delete('/tags/{tag}', [
  *	User
  */
 
+Route::get('/users/{id}/account', [
+	'uses' => 'UserController@getAccount',
+	'as' => 'users.account'
+]);
+
 Route::put('/users/{id}/role', [
 	'uses' => 'UserController@updateRole',
 	'as' => 'users.updateRole'
 ]);
-
 
 /*
  *	Admin

@@ -10,7 +10,15 @@ class UserController extends Controller
 {
     public function __construct()
     { 
+        $this->middleware('auth'); 
         $this->middleware('admin', ['only' => ['updateRole']]);   
+    }
+
+    public function getAccount($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('auth.account')->with('user', $user);
     }
 
     public function updateRole(Request $request, $id)
