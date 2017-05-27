@@ -11,7 +11,8 @@ class PostTest extends TestCase
 {
 	use DatabaseTransactions;
 
-    public function testCreateByAdmin()
+	/** @test */
+    public function it_has_status_published_when_admin_create_a_post()
     {
     	$admin = factory(User::class)->create();
         $admin->role_id = config('roles.admin');
@@ -25,19 +26,20 @@ class PostTest extends TestCase
         $this->assertEquals(config('post.published'), $post->published);
     }
 
-    public function testCreateByBasicUser()
+    /** @test */
+    public function it_has_status_review_when_basic_user_create_a_post()
     {
         $post = factory(Post::class)->make();
         $user = factory(User::class)->create();
 
         $post->user_id = $user->id;
-        $post->published = $user->getPublishedByRole();
         $post->save();
 
         $this->assertEquals(config('post.review'), $post->published);
     }
 
-    public function testLikePost()
+    /** @test */
+    public function a_user_can_like_post()
     {
     	$post = factory(Post::class)->make();
         $user = factory(User::class)->create();
@@ -45,8 +47,25 @@ class PostTest extends TestCase
         $post->user_id = $user->id;
         $post->save();
 
-        $post->triggerLike($user);
+        $oldLikes = $post->getLikes();
+        $post->like($user);
 
-        $this->assertEquals(1, $post->likes()->count());
+        $this->assertEquals($oldLikes + 1, $post->getLikes());
+    }
+
+    /** @test */
+    public function a_user_can_unlike_post()
+    {
+    	$post = factory(Post::class)->make();
+        $user = factory(User::class)->create();
+
+        $post->user_id = $user->id;
+        $post->save();
+
+        $post->like($user);
+        $oldLikes = $post->getLikes();
+        $post->unlike($user);
+
+        $this->assertEquals($oldLikes - 1, $post->getLikes());
     }
 }
