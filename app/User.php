@@ -67,11 +67,6 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40";
     }
 
-    public function hasLikedPost(Post $post)
-    {
-        return (bool) $post->likes->where('user_id', $this->id)->count();
-    }
-
     public function getPublishedByRole()
     {
         if($this->role_id === config('roles.basic')){

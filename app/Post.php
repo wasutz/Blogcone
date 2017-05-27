@@ -41,7 +41,7 @@ class Post extends Model
 
     public function triggerLike($user)
     {
-        if(!$user->hasLikedPost($this)){
+        if(!$this->isLiked($user)){
             $this->like($user);
         }else{
             $this->unlike($user);
@@ -58,6 +58,13 @@ class Post extends Model
     public function unlike($user)
     {
         $this->likes()->where('user_id', $user->id)->delete();
+    }
+
+    public function isLiked($user)
+    {
+        return (bool) $this->likes()
+                           ->where('user_id', $user->id)
+                           ->count();
     }
 
     public function addTags($tags)
