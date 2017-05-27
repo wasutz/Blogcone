@@ -28,6 +28,7 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence,
         'content' => $faker->text,
-        'published' => config('post.review')
+        'published' => config('post.review'),
+        'user_id' => factory(App\User::class)->create()->id
     ];
 });
