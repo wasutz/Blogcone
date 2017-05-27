@@ -14,7 +14,7 @@
 				@if (Auth::guest())
 					<span class="like-button glyphicon glyphicon-heart-empty"></span>
 				@else
-					<span class="like-button glyphicon glyphicon-heart{{ Auth::user()->hasLikedPost($post) ? '' : '-empty'}}"></span>
+					<span class="like-button glyphicon glyphicon-heart{{ $post->isLiked(Auth::user()) ? '' : '-empty'}}"></span>
 				@endif
 
 				<span class="likes-count">{{ $post->getLikes() }}</span>
