@@ -41,31 +41,23 @@ class PostTest extends TestCase
     /** @test */
     public function a_user_can_like_post()
     {
-    	$post = factory(Post::class)->make();
+    	$post = factory(Post::class)->create();
         $user = factory(User::class)->create();
 
-        $post->user_id = $user->id;
-        $post->save();
-
-        $oldLikes = $post->getLikes();
         $post->like($user);
 
-        $this->assertEquals($oldLikes + 1, $post->getLikes());
+        $this->assertEquals(true, $post->isLiked($user));
     }
 
     /** @test */
     public function a_user_can_unlike_post()
     {
-    	$post = factory(Post::class)->make();
+    	$post = factory(Post::class)->create();
         $user = factory(User::class)->create();
 
-        $post->user_id = $user->id;
-        $post->save();
-
         $post->like($user);
-        $oldLikes = $post->getLikes();
         $post->unlike($user);
 
-        $this->assertEquals($oldLikes - 1, $post->getLikes());
+        $this->assertEquals(false, $post->isLiked($user));
     }
 }
