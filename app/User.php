@@ -62,9 +62,9 @@ class User extends Authenticatable
         }
     }
 
-    public function getAvatarUrl() 
+    public function getAvatarUrl($size = 40) 
     {
-        return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40";
+        return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s={$size}";
     }
 
     public function getPublishedByRole()
