@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 use App\Post;
 use App\User;
+use Carbon\Carbon;
 
 class PostTest extends TestCase
 {
@@ -59,5 +60,24 @@ class PostTest extends TestCase
         $post->unlike($user);
 
         $this->assertEquals(false, $post->isLiked($user));
+    }
+
+    /** @test */
+    public function archives_must_return_correct_array()
+    {
+        $first = factory(Post::class)->create([
+            'published' => config('post.published'),
+            'created_at' => Carbon::now()->addMonth()
+        ]);
+
+        $posts = Post::archives();
+        $firstPost = $posts['0'];
+
+        $this->assertTrue(count($posts) > 0);
+        $this->assertEquals([
+            'year' => $first->created_at->format('Y'),
+            'month' => $first->created_at->format('F'),
+            'published' => 1
+        ], $firstPost);
     }
 }
