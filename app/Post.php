@@ -16,7 +16,7 @@ class Post extends Model
 
     public function user()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo(User::class);
     }
 
     public function tags()
@@ -26,12 +26,12 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     public function likes()
     {
-        return $this->morphMany('App\Like', 'likeable');
+        return $this->morphMany(Like::class, 'likeable');
     }
 
     public function getLikes()
@@ -62,9 +62,7 @@ class Post extends Model
 
     public function isLiked($user)
     {
-        return (bool) $this->likes()
-                           ->where('user_id', $user->id)
-                           ->count();
+        return (bool) $this->likes()->where('user_id', $user->id)->count();
     }
 
     public function addTags($tags)
