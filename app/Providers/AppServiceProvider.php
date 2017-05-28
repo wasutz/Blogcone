@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layouts.patials.sidebar', function($view){
+            $view->with('tags', \App\Tag::all()->take(15));
+        });
     }
 
     /**

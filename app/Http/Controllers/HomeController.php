@@ -13,10 +13,7 @@ class HomeController extends Controller
         $posts = Post::where('published', config('post.published'))
         			 ->orderBy('id', 'desc')
        				 ->paginate(config('post.paginate'));
-       				 
-        $tags = Tag::all()->take(15);
 
-        return view('index')->with(['posts' => $posts,
-                                    'tags' => $tags]);
+        return view('index', compact('posts'));
     }
 }
