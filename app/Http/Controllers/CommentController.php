@@ -36,7 +36,6 @@ class CommentController extends Controller
 
         $comment->delete();
 
-        return redirect()->back()
-                         ->with('info', 'Post Deleted.');
+        return back()->with('info', 'Comment Deleted.');
     }
 }
