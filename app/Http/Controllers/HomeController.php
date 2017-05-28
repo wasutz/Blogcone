@@ -12,6 +12,7 @@ class HomeController extends Controller
     {
         $posts = Post::where('published', config('post.published'))
         			 ->latest()
+        			 ->filter(request(['year', 'month']))
        				 ->paginate(config('post.paginate'));
 
         return view('index', compact('posts'));

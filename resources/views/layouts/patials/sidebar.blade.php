@@ -7,4 +7,17 @@
 			@endforeach
 		</ul>
 	</div>
+
+	<div class="tag card">
+		<h2 class="title">Archives</h2>
+		<ul>
+			@foreach ($archives as $archive)
+				<li>
+					<a href="/?month={{ $archive['month'] }}&year={{ $archive['year'] }}">
+						{{ $archive['month'] . ' ' . $archive['year'] }}
+					</a>
+				</li>
+			@endforeach
+		</ul>
+	</div>
 </div>
