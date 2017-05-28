@@ -18,7 +18,12 @@
 						</div>
 					</div>
 				</div>
-				<h2 class="title"><a href="">{{ $post->title }}</a></h2>
+
+				<h2 class="title">
+					<a href="{{ route('posts.show', ['post' => $post]) }}">
+						{{ $post->title }}
+					</a>
+				</h2>
 						
 				<div class="meta">
 					<span>by <a href="#">{{ $post->user->username }}</a></span> -
