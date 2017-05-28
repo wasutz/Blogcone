@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::where('published', config('post.published'))
-        			 ->orderBy('id', 'desc')
+        			 ->latest()
        				 ->paginate(config('post.paginate'));
 
         return view('index', compact('posts'));
