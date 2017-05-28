@@ -5,7 +5,10 @@ Blogcone is a project for practice Laravel by clone the website.
 + User roles and authentication
 + Blog posts (CRUD operations)
 + Like and comments
++ Tags
++ Archives
 + Admin management
++ WYSIWYG
 
 ## Tricks
 To test application the database is seeding with users:
