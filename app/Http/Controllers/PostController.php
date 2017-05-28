@@ -19,10 +19,9 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Auth::user()
-                     ->posts()
-                     ->orderBy('id', 'desc')
-                     ->paginate(config('post.paginate'));
+        $posts = Auth::user()->posts()
+                             ->orderBy('id', 'desc')
+                             ->paginate(config('post.paginate'));
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -98,7 +97,7 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
 
-        return redirect()->back()->with('info', 'Post Deleted.');
+        return back()->with('info', 'Post Deleted.');
     }
 
     public function postLike($id)
@@ -117,8 +116,7 @@ class PostController extends Controller
 
         $post->setPublished(config('post.published'));
 
-        return redirect()->back()
-                         ->with('info', 'Post already published.');
+        return back()->with('info', 'Post already published.');
     }
 
     public function postCancel($id)
@@ -127,7 +125,6 @@ class PostController extends Controller
 
         $post->setPublished(config('post.cancel'));
 
-        return redirect()->back()
-                         ->with('info', 'Post already cancel.');  
+        return back()->with('info', 'Post already cancel.');  
     }
 }
