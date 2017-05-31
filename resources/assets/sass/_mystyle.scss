@@ -34,6 +34,23 @@ $border-default: #EFEFEF;
 	text-align: center;
 }
 
+#flash-message {
+	position: absolute;
+	width: 25%;
+	right: 20px;
+	bottom: 20px;
+	z-index: 10;
+}
+
+#flash-message {
+	animation: flash-message 10s forwards;
+}
+
+@keyframes flash-message {
+    0%   {opacity: 1;}
+    100% {opacity: 0; display:none;}
+}
+
 /*
  *	Main Navbar
  */
