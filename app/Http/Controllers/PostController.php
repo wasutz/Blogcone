@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Illuminate\Http\Request;
-use App\Http\Requests\StorePost;
+use App\Http\Requests\PostRequest;
 use App\Post;
 use App\Tag;
-use App\Like;
+use Auth;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -31,7 +30,7 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(StorePost $request)
+    public function store(PostRequest $request)
     {
         $post = new Post;
 
@@ -65,7 +64,7 @@ class PostController extends Controller
         return view('posts.edit')->with('post', $post);
     }
 
-    public function update(StorePost $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
 
