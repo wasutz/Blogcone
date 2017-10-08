@@ -11,7 +11,7 @@
 	<h2>Edit Post</h2>
 	<form action="{{ route('posts.update', ['id' => $post->id]) }}" method="post">
 		{{ csrf_field() }}
-		<input name="_method" type="hidden" value="PUT">
+		{{ method_field('PUT') }}
 
 		<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
 		    <label for="title">Title:</label>
