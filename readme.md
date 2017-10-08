@@ -1,5 +1,5 @@
 ## Blogcone
-Blogcone is a project for practice Laravel by clone the website.
+Blogcone is a simple blog website built with Laravel.
 
 ## Features
 + User roles and authentication
