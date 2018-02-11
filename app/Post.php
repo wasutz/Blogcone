@@ -17,12 +17,12 @@ class Post extends Model
 
     public function user()
     {
-    	return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function tags()
     {
-    	return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
     }
 
     public function comments()
