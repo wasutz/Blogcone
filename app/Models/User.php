@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Enums\Role;
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -56,11 +57,11 @@ class User extends Authenticatable
     {
         switch ($this->role_id) {
             case config('roles.admin'):
-                return "Admin";
+                return Role::ADMIN_TEXT;
             case config('roles.super'):
-                return "Super User";
+                return Role::SUPERUSER_TEXT;
             default:
-                return "Basic User";
+                return Role::BASICUSER_TEXT;
         }
     }
 
@@ -78,6 +79,7 @@ class User extends Authenticatable
         return config('post.published');
     }
 
+    //TODO: refactor to use policy
     public function hasAuthority($object)
     {
         if($this->isAdmin()){
