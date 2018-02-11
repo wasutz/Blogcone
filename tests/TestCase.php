@@ -17,4 +17,11 @@ abstract class TestCase extends BaseTestCase
 
         return $this;
     }
+
+    protected function signInAsAdmin()
+    {
+    	$admin = create(User::class,  ['role_id' => config('roles.admin')]);
+
+    	return $this->signIn($admin);
+    }
 }
