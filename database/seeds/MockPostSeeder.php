@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Post;
+use App\Models\Post;
 use Faker\Factory as Faker;
 
 class MockPostSeeder extends Seeder

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -27,7 +26,6 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->save();
 
-        return  redirect()->back()
-        				  ->with('info', 'Update Role Successful.');
+        return back()->with('info', 'Update Role Successful.');
     }
 }

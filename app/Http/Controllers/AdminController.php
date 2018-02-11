@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Post;
-use App\Tag;
-use App\User;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
 
 class AdminController extends Controller
 {

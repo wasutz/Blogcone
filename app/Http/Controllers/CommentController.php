@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Http\Requests\StoreComment;
-use App\Comment;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');   
+        $this->middleware('auth');
     }
 
     public function store(StoreComment $request)

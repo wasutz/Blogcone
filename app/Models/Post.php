@@ -1,9 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Tag;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\Like;
 use Carbon\Carbon;
 
 class Post extends Model
@@ -17,12 +20,12 @@ class Post extends Model
 
     public function user()
     {
-    	return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function tags()
     {
-    	return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
     }
 
     public function comments()

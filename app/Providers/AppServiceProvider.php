@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Tag;
+use App\Models\Post;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,8 +17,8 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('layouts.patials.sidebar', function($view){
             $view->with([
-                'tags' => \App\Tag::all()->take(15),
-                'archives' => \App\Post::archives() 
+                'tags' => Tag::all()->take(15),
+                'archives' => Post::archives() 
             ]);
         });
     }
