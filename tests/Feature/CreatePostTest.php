@@ -16,9 +16,7 @@ class CreatePostTest extends TestCase
     /** @test */
     public function it_has_status_published_when_admin_create_a_post()
     {
-        $admin = create(User::class,  ['role_id' => config('roles.admin')]);
-
-        $this->signIn($admin);
+        $this->signInAsAdmin();
 
         $post = make(Post::class);
         $response = $this->post('/posts', $post->toArray());
