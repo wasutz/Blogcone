@@ -1,9 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Tag;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\Like;
 use Carbon\Carbon;
 
 class Post extends Model

@@ -1,18 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Comment extends Model
 {
     public function post()
     {
-    	return $this->belongsTo('App\Post');
+        return $this->belongsTo();
     }
 
     public function user()
     {
-    	return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 }

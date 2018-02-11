@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTag;
-use App\Tag;
+use App\Models\Tag;
 
 class TagController extends Controller
 {
@@ -50,7 +50,6 @@ class TagController extends Controller
         $tag->posts()->detach();
         $tag->delete();
 
-        return redirect()->back()
-                         ->with('info', 'Tag Already Deleted.');
+        return back()->with('info', 'Tag Already Deleted.');
     }
 }

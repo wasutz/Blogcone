@@ -6,8 +6,8 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use App\Post;
-use App\User;
+use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 
 class PostTest extends TestCase
