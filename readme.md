@@ -11,7 +11,7 @@ Blogcone is a simple blog website built with Laravel.
 + WYSIWYG
 
 ## Tricks
-To test application the database is seeding with users:
+The database is seeding with users below. You can use these users to test this application.
 
 Email and Password
 - admin@mail.com / password (Admin role)
