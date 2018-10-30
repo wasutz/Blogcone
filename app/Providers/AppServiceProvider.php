@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('layouts.patials.sidebar', function($view){
             $view->with([
-                'tags' => Tag::all()->take(15),
+                'tags' => Tag::has('posts', '>', 0)->get()->take(15),
                 'archives' => Post::archives() 
             ]);
         });
