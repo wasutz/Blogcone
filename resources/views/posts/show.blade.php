@@ -8,7 +8,11 @@
 			<h2 class="title"><a href="">{{ $post->title }}</a></h2>
 			<div class="meta">
 				<span>by <a href="#">{{ $post->user->username }}</a></span> -
-				<span>{{ $post->created_at->format('d M Y') }}</span>
+				<span>{{ $post->created_at->format('d M Y') }}</span> - 
+				<span>Tags: </span>
+				@foreach($post->tags as $tag)
+					<a href="{{ url('/tags/'. $tag->id)}}"><span>{{ $tag->name }}</span></a>
+				@endforeach
 			</div>
 			<p class="content">{!! $post->content !!}</p>
 
@@ -40,11 +44,11 @@
 					<textarea class="form-control" name="content" placeholder="Write a comment..."></textarea><br/>
 					<button type="submit" class="btn btn-primary pull-right">Publish</button>
 
-				    @if ($errors->has('content'))
-		                <span class="help-block">
-		                    <strong>{{ $errors->first('content') }}</strong>
-		                </span>
-		            @endif
+					@if ($errors->has('content'))
+						<span class="help-block">
+							<strong>{{ $errors->first('content') }}</strong>
+						</span>
+					@endif
 				</form>
 			</div>
 		@endif
@@ -54,15 +58,17 @@
 				@foreach($post->comments as $comment)
 					<div class="card clearfix">
 						@if (!Auth::guest() && (Auth::user()->isAdmin() || Auth::user()->hasAuthority($comment)))
-						    <button data-path="{{ route('comments.destroy', ["id"=> $comment->id]) }}" 
-						    		data-title="{{ substr($comment->content, 0, 30) }}" 
-						    		data-toggle="modal" 
-						    		data-target="#confirmDelete"
-						    		class="btn btn-danger btn-sm pull-right margin-up-1" >Delete</button>
+							<a href="#" class="pull-right margin-up-1">
+								<span class="glyphicon glyphicon-trash"
+									  data-path="{{ route('comments.destroy', ["id"=> $comment->id]) }}" 
+									  data-title="{{ substr($comment->content, 0, 30) }}" 
+									  data-toggle="modal" 
+									  data-target="#confirmDelete"></span>
+							</a>
 						@endif
 
 						<div class="margin-up-1">
-							<img src="{{ $comment->user->getAvatarUrl() }}" />
+							<img class="img-circle" src="{{ $comment->user->getAvatarUrl() }}" />
 							<span>{{ $comment->user->username }}</span><br/>
 						</div>
 
@@ -82,41 +88,43 @@
 <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" 
 	 aria-labelledby="deleteLabel">
 
-    <form id="form-deleted" action="#" method="post">		
-     	{{ csrf_field() }}		
-     	<input type="hidden" name="_method" value="delete" />		
+	<form id="form-deleted" action="#" method="post">
+		{{ csrf_field() }}
+		<input type="hidden" name="_method" value="delete" />
 		
-	        <div class="modal-dialog" role="document">		
-	          	<div class="modal-content">		
-             	<div class="modal-header">		
-               		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               			<span aria-hidden="true">&times;</span>
-               		</button>		
-               		<h4 class="modal-title" id="deleteLabel">Delete?</h4>		
-             	</div>		
-             	<div class="modal-body">		
-               		<b>This is permanent delete.</b> 
-               		Are you sure you want to delete 		
-             	</div>		
-             	<div class="modal-footer">		
-               		<button type="button" class="btn btn-default" data-dismiss="modal">		Cancel
-               		</button>		
-               		<button type="submit" class="btn btn-primary">Delete</button>
-             	</div>				
-             </div>
-     	</div>		
-    </form>		
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="deleteLabel">Delete?</h4>
+				</div>
+				<div class="modal-body">
+					<b>This is permanent delete.</b> 
+					Are you sure you want to delete
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">		Cancel
+					</button>
+					<button type="submit" class="btn btn-primary">Delete</button>
+				</div>
+			 </div>
+		</div>
+	</form>
 </div>
 @endsection
 
 @section("scripts")
 	<script src="../js/like.js"></script>
-	<script>		
- 	    $('#confirmDelete').on('show.bs.modal', function(e) {		
- 	        var data = $(e.relatedTarget).data();		
- 		
- 	        $('.modal-body', this).append('<b>' + data.title + '</b> ?');		
- 	        $('#form-deleted').attr('action', data.path);		
- 	    });		
- 	</script>
+	<script>
+		$('#confirmDelete').on('show.bs.modal', function(e) {
+			var data = $(e.relatedTarget).data();
+
+			if($('#append-title').length == 0) {
+				$('.modal-body', this).append("<b id='append-title'>" + data.title + '?</b>');
+			}
+			$('#form-deleted').attr('action', data.path);
+		});
+	</script>
 @endsection
