@@ -45,9 +45,9 @@ class Post extends Model
 
     public function triggerLike($user)
     {
-        if(!$this->isLiked($user)){
+        if (!$this->isLiked($user)) {
             $this->like($user);
-        }else{
+        } else {
             $this->unlike($user);
         }
     }
