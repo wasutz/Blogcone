@@ -1,4 +1,23 @@
 <div class="post card clearfix">
+    @if ($isMyPostPage)
+        <div class="manage-button pull-right">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ route('posts.edit', ['post' => $post])}}">
+                        <button class="btn btn-warning btn-sm">Edit</button>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <button data-path="{{ route('posts.destroy', ['id' => $post->id]) }}"
+                        data-title="{{ $post->title }}"
+                        data-toggle="modal"
+                        data-target="#confirmDelete"
+                        class="btn btn-danger btn-sm">Delete</button>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <h2 class="title">
         <a href="{{ route('posts.show', ['post' => $post]) }}">
             {{ $post->title }}

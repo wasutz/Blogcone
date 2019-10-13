@@ -5,7 +5,7 @@
 	<div class="col-md-8">
 		<h2>Tag: {{ $tag->name }}</h2>
 		@foreach ($posts as $post)
-			@include('layouts.patials.post')
+			@include('layouts.patials.post', ['isMyPostPage' => false])
 		@endforeach
 	</div>
 		

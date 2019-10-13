@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-md-8">
 		@foreach ($posts as $post)
-			@include('layouts.patials.post')
+			@include('layouts.patials.post', ['isMyPostPage' => false])
 		@endforeach
 	</div>
 	
