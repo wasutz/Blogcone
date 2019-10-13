@@ -57,7 +57,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if(!Auth::user()->hasAuthority($post)){
+        if (!Auth::user()->hasAuthority($post)) {
             abort(404);
         }
 
@@ -68,7 +68,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if(!Auth::user()->hasAuthority($post)){
+        if (!Auth::user()->hasAuthority($post)) {
             abort(404);
         }
 
@@ -89,7 +89,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if(!Auth::user()->hasAuthority($post)){
+        if (!Auth::user()->hasAuthority($post)) {
             abort(404);
         }
 
