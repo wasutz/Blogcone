@@ -10,8 +10,6 @@ $(document).ready(function() {
             url: $(this).parent().attr('action'),
 
             success: function(data) {
-            	console.log(data);
-
               	likes.text(data.length);
                 changeLikeClass(likeButton);
             },
@@ -22,10 +20,10 @@ $(document).ready(function() {
         });
 
         function changeLikeClass(likeButton){
-            if(likeButton.hasClass('glyphicon-heart')){
+            if (likeButton.hasClass('glyphicon-heart')) {
                 likeButton.addClass('glyphicon-heart-empty');
                 likeButton.removeClass('glyphicon-heart');
-            }else{
+            } else {
                 likeButton.removeClass('glyphicon-heart-empty');
                 likeButton.addClass('glyphicon-heart');
             }
